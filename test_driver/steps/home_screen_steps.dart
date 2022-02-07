@@ -9,14 +9,14 @@ class InitialStateOfApp extends GivenWithWorld<FlutterWorld> {
           ..timeout = const Duration(seconds: 10));
 
   @override
+  RegExp get pattern => RegExp(r"I test the initial state of the app");
+
+  @override
   Future<void> executeStep() async {
     HomeScreen homeScreen = HomeScreen(world.driver);
 
     //expectMatch(await homePage.getCounterValue(), value);
   }
-
-  @override
-  RegExp get pattern => RegExp(r"I test the initial state of the app");
 }
 
 class ClickPlus extends AndWithWorld<FlutterWorld> {
@@ -25,13 +25,13 @@ class ClickPlus extends AndWithWorld<FlutterWorld> {
           ..timeout = const Duration(seconds: 10));
 
   @override
-  Future<void> executeStep() async {
-    HomeScreen homePage = HomeScreen(world.driver);
-    await homePage.clickBtnPlus();
-  }
+  RegExp get pattern => RegExp(r"I click the plus button");
 
   @override
-  RegExp get pattern => RegExp(r"I click the plus button");
+  Future<void> executeStep() async {
+    HomeScreen homeScreen = HomeScreen(world.driver);
+    await homeScreen.clickBtnPlus();
+  }
 }
 
 class ClickSubtract extends AndWithWorld<FlutterWorld> {
@@ -40,13 +40,13 @@ class ClickSubtract extends AndWithWorld<FlutterWorld> {
           ..timeout = const Duration(seconds: 10));
 
   @override
-  Future<void> executeStep() async {
-    HomeScreen homePage = HomeScreen(world.driver);
-    await homePage.clickSubtractButton();
-  }
+  RegExp get pattern => RegExp(r"I click subtract button");
 
   @override
-  RegExp get pattern => RegExp(r"I click subtract button");
+  Future<void> executeStep() async {
+    HomeScreen homeScreen = HomeScreen(world.driver);
+    await homeScreen.clickSubtractButton();
+  }
 }
 
 class ISeeValue extends Then1WithWorld<String, FlutterWorld> {
@@ -55,11 +55,11 @@ class ISeeValue extends Then1WithWorld<String, FlutterWorld> {
           ..timeout = const Duration(seconds: 10));
 
   @override
-  Future<void> executeStep(String value) async {
-    HomeScreen homePage = HomeScreen(world.driver);
-    expectMatch(await homePage.getCounterValue(), value);
-  }
+  RegExp get pattern => RegExp(r"I see if the value is {string}");
 
   @override
-  RegExp get pattern => RegExp(r"I see if the value is {string}");
+  Future<void> executeStep(String value) async {
+    HomeScreen homeScreen = HomeScreen(world.driver);
+    expectMatch(await homeScreen.getCounterValue(), value);
+  }
 }

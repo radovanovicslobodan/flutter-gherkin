@@ -8,17 +8,15 @@ class HomeScreen {
   final txtAlert = find.byValueKey("alert_text");
   final btnClose = find.byValueKey("close_button");
 
-  late FlutterDriver _driver;
+  FlutterDriver _driver;
 
-  HomeScreen(FlutterDriver driver) {
-    _driver = driver;
-  }
+  HomeScreen(FlutterDriver driver) : _driver = driver {}
 
   Future<String> getCounterValue() async {
     return await _driver.getText(txtCounter);
   }
 
-  Future<void> clickBtnPlus() async {
+  Future<void> clickAddButton() async {
     return await _driver.tap(btnIncrement);
   }
 
