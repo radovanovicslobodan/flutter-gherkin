@@ -30,7 +30,7 @@ class ClickPlus extends AndWithWorld<FlutterWorld> {
   @override
   Future<void> executeStep() async {
     HomeScreen homeScreen = HomeScreen(world.driver);
-    await homeScreen.clickBtnPlus();
+    await homeScreen.clickAddButton();
   }
 }
 
